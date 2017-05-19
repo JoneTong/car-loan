@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery.js"></script>
+	<style>
+	  html,body{
+	  	margin:0 ;height:100%;
+	  }
+      .barbox{
+      	width: 80px;height:100%;background: gray;
+      }
+      .con{
+      	width: 100%;height:60px;line-height: 60px;text-align: center;position: relative;
+      }
+      .btn{
+      	width: 100px;height:60px;background: orange;position: absolute;left:160px;top:0;
+      	/*visibility: hidden;*//*transition:all 0.3s;*/display: none;
+      }
+     /* .con:hover .btn{
+      	left:80px;visibility: visible;
+      }*/
+	</style>
+</head>
+<body>
+	<div class="barbox">
+		<div class="con">01
+			<div class="btn">01</div>
+		</div>
+		<div class="con">02
+			<div class="btn">02</div>
+		</div>
+		<div class="con">03
+			<div class="btn">03</div>
+		</div>
+		<div class="con">04
+			<div class="btn">04</div>
+		</div>
+		<div class="con">05
+			<div class="btn">05</div>
+		</div>
+		<div class="con">06
+			<div class="btn">06</div>
+		</div>
+		<div class="con">07
+			<div class="btn">07</div>
+		</div>
+		<div class="con">08
+			<div class="btn">08</div>
+		</div>
+		<div class="con">09
+			<div class="btn">09</div>
+		</div>
+		<div class="con">10
+			<div class="btn">10</div>
+		</div>
+	</div>
+	<script>
+
+	function side_animate(outdivid,movedivid,rightover,rightleft){
+      var a =null;
+      var index;
+      $(outdivid).hover(
+        function(){
+          $(this).css('background-color','#ec3e7d');
+          index=$(this).index(outdivid);
+          a = setTimeout(
+            function(){
+              $(movedivid).eq(index).show();
+              $(movedivid).eq(index).animate({
+                // opacity : 1,
+                left: rightover
+              }, 225, function(){          
+                a = null;
+              });
+            }, 200
+          )
+        },
+        function(){
+           $(outdivid).css('background-color','');
+            clearTimeout(a);
+            $(movedivid).eq(index).animate({
+              left: rightleft
+            }, 225, function(){
+              $(this).hide();
+            });
+        }
+      );
+}
+  side_animate(".con",".btn","80px","180px")
+     
+
+
+
+//        function findWindowHeight(){
+//   if (window.innerHeight) {
+//     winHeight = window.innerHeight;
+//   }else if ((document.body) && (document.body.clientHeight)) {
+//     winHeight = document.body.clientHeight;
+//   }
+//   if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth) {
+//     winHeight = document.documentElement.clientHeight;
+//   }
+
+//   return winHeight;
+// }
+
+
+// window.addEvent('resize',function(){
+//   JQ(".sidebar").css({'height':findWindowHeight()});
+//   JQ('#js_sidecart').css({'height':findWindowHeight()});
+//   JQ('#js_updatecart .sidecart-list').css({'height':findWindowHeight()-145});
+//   //JQ('#js_updatecart').css({'height':findWindowHeight()-160});
+
+//   JQ('#js_updatecart .sidecart-totle').css({'position':'absolute'});
+//  JQ('#js_updatecart .sidecart-totle').css({'bottom':'60px'});
+
+
+
+//   JQ('#js_sidehistory').css({'height':findWindowHeight()});
+//   JQ('#js_sidehistory .sidecart-list').css({'height':findWindowHeight()-80});
+
+
+
+// });
+	</script>
+</body>
+</html>
